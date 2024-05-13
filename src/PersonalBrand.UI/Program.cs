@@ -1,3 +1,5 @@
+using PersonalBrand.Application;
+using PersonalBrand.Infrastructure;
 
 namespace PersonalBrand.UI
 {
@@ -10,6 +12,10 @@ namespace PersonalBrand.UI
             // Add services to the container.
 
             builder.Services.AddControllers();
+
+            builder.Services.AddApplicationDependencyInjection();
+            builder.Services.AddInfrastructureDependencyInjection(builder.Configuration);
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -24,6 +30,13 @@ namespace PersonalBrand.UI
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors(options =>
+            {
+                options.AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowAnyOrigin();
+            });
 
             app.UseAuthorization();
 
