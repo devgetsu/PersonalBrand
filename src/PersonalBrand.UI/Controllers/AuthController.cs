@@ -7,14 +7,9 @@ namespace PersonalBrand.UI.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class AuthController : ControllerBase
+    public class AuthController(UserManager<UserModel> userManager) : ControllerBase
     {
-        private readonly UserManager<UserModel> _userManager;
-
-        public AuthController(UserManager<UserModel> userManager)
-        {
-            _userManager = userManager;
-        }
+        private readonly UserManager<UserModel> _userManager = userManager;
 
         [HttpPost]
         public async Task<IActionResult> Register(Register registerModel)
