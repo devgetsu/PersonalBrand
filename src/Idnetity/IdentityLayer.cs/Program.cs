@@ -1,4 +1,8 @@
 
+using IdentityLayer.Persistanse;
+using Microsoft.AspNetCore.Identity;
+using PersonalBrand.Domain.Entities.Auth;
+
 namespace IdentityLayer.cs
 {
     public class Program
@@ -13,6 +17,10 @@ namespace IdentityLayer.cs
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddIdentity<UserModel, IdentityRole>()
+                    .AddEntityFrameworkStores<AuthDbContext>()
+                    .AddDefaultTokenProviders();
 
             var app = builder.Build();
 
