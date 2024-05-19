@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using PersonalBrand.Domain.Entities.Auth;
 using PersonalBrand.Domain.IdentityModels;
 
-namespace PersonalBrand.UI.Controllers
+namespace IdentityLayer.cs.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
